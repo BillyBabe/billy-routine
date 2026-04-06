@@ -1,0 +1,21 @@
+{
+  "name": "Billy's Glow Up",
+  "short_name": "Glow Up",
+  "description": "Daily Routine & Agenda for Goddess Billy ✨",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffb6c1",
+  "icons": [
+    {
+      "src": "profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "inspiration.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

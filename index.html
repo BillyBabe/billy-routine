@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Billy's Glow Up ✨</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="style.css?v=2.4">
+    <link rel="manifest" href="manifest.json?v=2.4">
+    <meta name="theme-color" content="#ffb6c1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <!-- [V2.2 UPDATE MARKER] -->
+    <div class="app-container vs-vertical-stripes">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar glass-card">
+            <div class="sidebar-header">
+                <div class="logo serif">
+                    <i class="ph-fill ph-crown pink-accent"></i>
+                    <span>Billy's Glow Up</span>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="ph-bold ph-sparkle"></i>
+                    <span>Today</span>
+                </li>
+                <li class="nav-item" data-page="agenda">
+                    <i class="ph-bold ph-calendar-heart"></i>
+                    <span>Agenda</span>
+                </li>
+                <li class="nav-item" data-page="routines">
+                    <i class="ph-bold ph-list-checks"></i>
+                    <span>Daily & Weekly</span>
+                </li>
+                <li class="nav-item" data-page="health">
+                    <i class="ph-bold ph-barbell"></i>
+                    <span>Dream Body</span>
+                </li>
+                <li class="nav-item" data-page="study">
+                    <i class="ph-bold ph-book-open"></i>
+                    <span>Study Tracker</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="reset-btn" id="btn-daily-reset">
+                    <i class="ph-bold ph-arrows-counter-clockwise"></i>
+                    <span>Daily Reset</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h4 class="gold-accent">Hey Goddess Billy ✨</h4>
+                    <h1 class="serif" id="header-title">Today's Routine</h1>
+                    <p id="current-date" style="font-size: 1.1rem; font-weight: 600; color: var(--vs-pink-deep); text-transform: uppercase; letter-spacing: 1px;"></p>
+                </div>
+                <div class="profile-icon">
+                    <img src="profile.jpg" alt="Billy's Silhouette">
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div id="page-dashboard" class="page active">
+                <div class="grid-dashboard">
+                    <div class="glass-card card-mini">
+                        <i class="ph-fill ph-quotes pink-accent"></i>
+                        <p id="daily-quote" class="quote-small italic">"Always dress like you're going to see your worst enemy."</p>
+                    </div>
+
+                    <div class="glass-card card-mini">
+                        <i class="ph-fill ph-drop pink-accent"></i>
+                        <h4 style="margin-bottom: 5px;">Hydration Check</h4>
+                        <p>Heb je vandaag al je 2L water gedronken, queen? 💧✨</p>
+                    </div>
+
+                    <div class="glass-card tasks-card" style="grid-column: span 2;">
+                        <h3 id="my-day-title">My Day</h3>
+                        <div class="checklist" id="checklist-today">
+                            <!-- Ingevuld vanuit JS (Routines + Agenda Tasks) -->
+                        </div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-todo" placeholder="Extra taakje toevoegen aan vandaag...">
+                            <button class="btn-primary-small" id="btn-add-todo">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agenda Page -->
+            <div id="page-agenda" class="page">
+                <h2>Agenda Overzicht</h2>
+                <div id="agenda-week-grid">
+                    <!-- Genereert week via JS -->
+                </div>
+            </div>
+
+            <!-- Routines (Daily & Weekly & Monthly) Page -->
+            <div id="page-routines" class="page">
+                <h2>Habits & Routines</h2>
+                <div class="grid-routines">
+                    <div class="glass-card">
+                        <h3 style="border-bottom-color: #ffd1dc;">🌅 Morning</h3>
+                        <div id="morning-habits-master" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-morning" placeholder="Nieuwe morning routine...">
+                            <button class="btn-primary-small" id="btn-add-morning">+</button>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3 style="border-bottom-color: #ffb6c1;">☀️ Day</h3>
+                        <div id="day-habits-master" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-day" placeholder="Nieuwe day routine...">
+                            <button class="btn-primary-small" id="btn-add-day">+</button>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3 style="border-bottom-color: #ff9fb4;">🌙 Night</h3>
+                        <div id="night-habits-master" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-night" placeholder="Nieuwe night routine...">
+                            <button class="btn-primary-small" id="btn-add-night">+</button>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Weekly Habits</h3>
+                        <div id="weekly-habits-master" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-weekly" placeholder="Nieuwe weekly...">
+                            <button class="btn-primary-small" id="btn-add-weekly">+</button>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Monthly Habits</h3>
+                        <div id="monthly-habits-master" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-new-monthly" placeholder="Nieuwe monthly...">
+                            <button class="btn-primary-small" id="btn-add-monthly">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health (Dream Body) Page -->
+            <div id="page-health" class="page">
+                <h2>Dream Body</h2>
+                <div class="grid-health">
+                    <!-- Original 3-Column Gym Split -->
+                    <div class="glass-card">
+                        <h3>Gym Day 1 🍑</h3>
+                        <div class="gym-split-item" style="border: 2px solid #000; padding:15px; border-radius:20px;">
+                            <strong>Glutes + Pilates</strong>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Gym Day 2 🐍</h3>
+                        <div class="gym-split-item" style="border: 2px solid #000; padding:15px; border-radius:20px;">
+                            <strong>Rug + Core + Stairmaster</strong>
+                        </div>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Gym Day 3 💅</h3>
+                        <div class="gym-split-item" style="border: 2px solid #000; padding:15px; border-radius:20px;">
+                            <strong>Glutes + Core + Stairmaster</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-dashboard" style="margin-top:30px;">
+                    <div class="glass-card">
+                        <img src="inspiration.png" alt="Inspiration" style="width:100%; border-radius: var(--border-radius-md); border: 3px solid var(--vs-black); margin-bottom: 15px;">
+                        <h3>Weight Log</h3>
+                        <div class="weight-entry">
+                            <input type="number" id="input-weight" placeholder="kg..." step="0.1">
+                            <button class="btn-primary" id="btn-add-weight">Log</button>
+                        </div>
+                        <div class="weight-history-list" id="weight-history"></div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>Baddie Groceries</h3>
+                        <div id="grocery-list" class="checklist"></div>
+                        <div class="add-row" style="margin-top:20px;">
+                            <input type="text" id="input-grocery" placeholder="Fruit, snacks, skincare...">
+                            <button class="btn-primary-small" id="btn-add-grocery">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Stats Page -->
+            <div id="page-study" class="page">
+                <h2>Study Tracker</h2>
+                <h3 style="display:block; text-align:center; font-style:italic; font-size: 1.5rem; margin-bottom: 30px; border: none;">You're doing amazing, sweetie. Keep glowing! 💅✨</h3>
+                <div class="grid-study">
+                    <div class="glass-card">
+                        <h3>Study Timer</h3>
+                        <div style="text-align: center; padding: 20px;">
+                            <h1 id="timer-display" style="font-size: 5rem; letter-spacing: 5px;">25:00</h1>
+                            <div style="display:flex; gap:15px; justify-content:center; margin-top:20px;">
+                                <button class="btn-primary" id="btn-timer-start" style="padding: 15px 40px;">Start</button>
+                                <button class="btn-secondary" id="btn-timer-reset">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card study-stats-card" style="text-align: center;">
+                        <h3>Sessie Tracker (25m)</h3>
+                        <div id="study-hearts-container" style="display:flex; justify-content:center; gap: 15px; font-size: 3rem; color: var(--vs-pink); margin-top: 20px; margin-bottom: 20px; cursor: pointer;">
+                            <!-- Hearts generated by JS -->
+                        </div>
+                        <div style="font-size: 1.1rem; font-weight: bold;">
+                            Daily Target: <input type="number" id="input-study-target" min="1" max="10" style="width: 70px; padding: 8px; margin-left: 10px; border: 2px solid var(--vs-black); border-radius: 10px; text-align: center;"> Sessies
+                        </div>
+                        <div class="study-summary" style="margin-top: 30px;">
+                            <span class="total-label">Today Tracker:</span>
+                            <span class="total-value" id="study-total-today">0 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/store.js?v=2.4"></script>
+    <script src="js/app.js?v=2.4"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
